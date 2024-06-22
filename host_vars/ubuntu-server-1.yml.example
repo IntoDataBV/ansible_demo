@@ -1,4 +1,4 @@
 ---
-user: intodata
-ssh_pubkey: ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKcgk9oqPba5Cm/JYDshyAE69ZI33/PvryRM8N73BiKx
+user: < username >
+ssh_pubkey: <ssh public key >
 ...

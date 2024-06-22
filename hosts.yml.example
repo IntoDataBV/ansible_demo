@@ -3,9 +3,9 @@ vm:
     vm-linux:
       hosts:
         ubuntu-server-1:
-          ansible_host: 194.164.202.70
-          ansible_user: root
-          ansible_ssh_private_key_file: ~/intodata/keys/monitoring.pem
+          ansible_host: < your.ip.adress >
+          ansible_user: < login_user >
+          ansible_ssh_private_key_file: < ssh.private.key >
 
 connector-linux:
   children:
