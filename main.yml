@@ -1,0 +1,31 @@
+---
+- hosts: all
+  pre_tasks:
+    - name: Update Package Cache (apt/Debian)
+      tags: always
+      ansible.builtin.apt:
+        upgrade: yes
+        update_cache: yes
+        cache_valid_time: "{{ apt_cache_valid_time | default(86400) }}" # Use a variable with a default value Default 1 Day
+        clean: yes
+        autoremove: yes
+        purge: true
+      changed_when: false
+
+- hosts: all
+  roles:
+    - role: base
+      tags:
+        - base_tag
+        - motd_tag
+        - package_tag
+        - user_tag
+
+- hosts: all
+  roles:
+    - role: security
+      tags:
+        - firewall_tag
+        - security_tag
+        - ssh_tag
+...

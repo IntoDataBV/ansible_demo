@@ -1,0 +1,7 @@
+---
+- name: Install Packages (apt/Debian)
+  tags: base
+  ansible.builtin.package:
+    name: "{{ debian_packages }}"
+    state: latest
+...

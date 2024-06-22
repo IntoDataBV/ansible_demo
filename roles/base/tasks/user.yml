@@ -1,0 +1,31 @@
+---
+- name: Create group in host
+  ansible.builtin.group:
+    name: "{{ user }}"
+    state: present
+
+- name: Create a user 'johnd' with a home directory
+  ansible.builtin.user:
+    name: "{{ user }}"
+    groups: "{{ user }}, sudo"
+    create_home: yes
+
+- name: "Configure passwordless sudo for the user"
+  ansible.builtin.lineinfile:
+    dest: /etc/sudoers
+    line: "{{ user }} ALL=(ALL) NOPASSWD: ALL"
+    validate: 'visudo -cf %s'
+
+- name: "Check if SSH exists as directory"
+  ansible.builtin.file:
+    path: "/home/{{ user }}/.ssh"
+    state: directory
+    owner: "{{ user }}"
+    group: "{{ user }}"
+    mode: 0775
+
+- name: "Add SSH key to the 'authorized_keys' file for user "
+  ansible.builtin.authorized_key:
+    user: "{{ user }}"
+    key: "{{ ssh_pubkey }}"
+...

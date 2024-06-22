@@ -1,0 +1,19 @@
+#!/bin/bash
+
+AVAIL="$(df --output=avail -h / | tail -1 | xargs)"
+USED="$(df --output=used -h / | tail -1 | xargs)"
+TOTAL="$(df --output=size -h / | tail -1 | xargs)"
+IP="$(last | head -1 | cut -c 23-39 | xargs)"
+CITY="$(curl -s "https://ipapi.co/${IP}/json" | grep 'city' | sed -E 's/.*city\": "([^,"]*)"?.*/\1/')"
+WEATHER="$(curl -s wttr.in/${CITY}?format=%l:+%c+%t)"
+
+echo ""
+echo "   Welcome $IP!, The Weather in $WEATHER"
+echo "             you are entering into a secured area!"
+echo "      This service is restricted to authorized users only."
+echo "           All activities on this system are logged."
+echo ""
+echo " Uptime..............: $(uptime -p | sed 's/^up.//')"
+echo " Disk................: Used: $(echo "$USED" | awk '{print $1}')B | Free: $(echo "$AVAIL" | awk '{print $1}')B"
+echo " SSH Logins..........: $(who | wc -l) users logged in"
+echo ""

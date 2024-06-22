@@ -1,0 +1,13 @@
+---
+- name: Configure SSH connections
+  ansible.builtin.include_tasks: 
+    file: ssh_config.yml
+  tags:
+    - ssh_tag
+
+- name: Configure Firewall
+  ansible.builtin.include_tasks: 
+    file: firewall.yml
+  tags:
+    - firewall_tag
+...

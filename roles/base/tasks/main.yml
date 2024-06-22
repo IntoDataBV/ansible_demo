@@ -1,0 +1,19 @@
+---
+- name: Configure User Settings
+  ansible.builtin.include_tasks: 
+    file: user.yml
+  tags:
+    - user_tag
+
+- name: Install Packages
+  ansible.builtin.include_tasks: 
+    file: package.yml
+  tags:
+    - package_tag
+
+- name: Change Message of the day
+  ansible.builtin.include_tasks: 
+    file: motd.yml
+  tags:
+    - motd_tag
+...
