@@ -38,7 +38,7 @@ To run the playbook, ensure that you have the latest version of Ansible installe
 
 ###  Installing Ansible
 
-Ansible is an agentless automation tool that you install on a single host (referred to as the control node). From the control node, Ansible can manage an entire fleet of machines and other devices (referred to as managed nodes) remotely with [[SSH]], [[Powershell]] remoting, and numerous other transports, all from a simple command-line interface with no databases or daemons required.
+Ansible is an agentless automation tool that you install on a single host (referred to as the control node). From the control node, Ansible can manage an entire fleet of machines and other devices (referred to as managed nodes) remotely with SSH, Powershell remoting, and numerous other transports, all from a simple command-line interface with no databases or daemons required.
 
 To run the playbook, ensure that you have the latest version of Ansible installed. Please follow the steps below:
 
@@ -57,7 +57,6 @@ python3 -m pip -V
 If all is well, you should see something like the following:
 
 ```bash
-python3 -m pip -V
 pip 23.3.1 from /usr/lib/python3.12/site-packages/pip (python 3.12)
 ```
 
